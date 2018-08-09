@@ -36,10 +36,19 @@ In order to run DRF_api_example, please install postgreSQL and both the Python r
 ### REST API Details
 The following operations are supported -
 - Create a new Order
-- Get all orders made by the customers
+- Get all orders created by the customers
 - Get a specific order
 - Update an Order
 - Delete an Order
+
+### TESTS
+Tests has been included in `orders/tests.py` for the following cases - 
+- Create a new Order
+- Get records of order created by customers
+- Update an order
+- Partial update of an order e.g only changing `customer address`
+- Deleting a order 
+
 ### [Click here to view API Description](https://3x5c8j0mdqavudhhb7owqg-on.drv.tw/api_order.html)
 
 ### [Click here to view Video Demonstration](https://www.useloom.com/share/adc43054bcf54f2c80d30fae32b1722a)
