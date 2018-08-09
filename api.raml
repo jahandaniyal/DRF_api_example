@@ -1,0 +1,123 @@
+#%RAML 1.0
+title: Pizza Order REST
+version: v1
+baseUri: http://127.0.0.1:8080/orders/
+protocols: [ HTTP ]
+mediaType: application/json
+
+types:
+  OrderResponse:
+    description: Order Response Object
+    example: |
+      {
+        "pizza_id": 16,
+        "pizza_size": "50 cm",
+        "customer_name": "John Cramer",
+        "customer_address": "156b Mullerstr."
+      }
+    properties:
+      pizza_id: number
+      pizza_size: string
+      customer_name: string
+      customer_address: string
+  Error404:
+    description: Error object
+    example: |
+        {
+          "detail": "Not found."
+        }
+
+  Error405:
+    description: Error object
+    example: |
+        {
+          "detail": "Method <method_name> not allowed."
+        }
+  Error400:
+    description: Error object
+    example: |
+        {
+            "customer_address": [
+                "This field is required."
+            ],
+            "pizza_size": [
+                "This field is required."
+            ],
+            "customer_name": [
+                "This field is required."
+            ]
+        }
+
+
+/orders:
+  get:
+    description: List all orders placed by customers
+    responses:
+      200:
+        description: SUCCESS
+        body:
+          application/json:
+            type: object
+            properties:
+              orders: OrderResponse[]
+      404:
+        description: Order does not exists
+        body:
+          application/json:
+            type: Error404
+  post:
+    description: Create a New Order
+    responses:
+      201:
+        description: SUCCESS
+        body:
+          application/json:
+            type: object
+            properties:
+              orders: OrderResponse
+      405:
+        description: Method Not Allowed
+        body:
+          application/json:
+            type: Error405
+      400:
+        description: BAD REQUEST
+        body:
+          application/json:
+            type: Error400
+
+  /{order_id}:
+    get:
+      description: Get an Order by id
+      responses:
+        200:
+          description: SUCCESS
+          body:
+            application/json:
+              type: OrderResponse
+        404:
+          description: The order id could not be found or doesn't exists
+          body:
+            application/json:
+              type: Error404
+    put:
+      description: Update an order information by its ID
+      responses:
+        200:
+          description: SUCCESS
+          body:
+            application/json:
+              type: OrderResponse
+        400:
+          description: BAD REQUEST
+          body:
+            application/json:
+              type: Error400
+    delete:
+      description: Update an order information by its ID
+      responses:
+        204:
+          description: SUCCESS, CONTENT DELETED FROM DB
+          body:
+            application/json:
+              type: null
