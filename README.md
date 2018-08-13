@@ -10,7 +10,7 @@ Requirements
 Running locally
 ===================================
 
-In order to run DRF_api_example, please install postgreSQL and both the Python runtime and development environments. GraphSpace code, and set up and start the server.  The following instructions should apply to computers running a version of the Linux or OS X operating systems.
+In order to run DRF_api_example, please install postgreSQL and both the Python runtime and development environments. The following instructions should apply to computers running a version of the Linux or OS X operating systems.
 
 1. Download the DRF_api_example code by running `git clone https://github.com/jahandaniyal/DRF_api_example.git`
 2. Visit the DRF_api_example directory: `cd DRF_api_example`
